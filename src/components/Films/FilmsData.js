@@ -21,9 +21,10 @@ const FilmsData = props => {
   }, [])
 
   return (
-    <div>
-      <p>{film.title}</p>
-    </div>
+    <>
+      {film.title}
+      {', '}
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import FilmsData from '../Films/FilmsData'
+import { Card, CardContent, Grid, Typography } from '@mui/material'
 
 const Characters = () => {
   const charactersAPI = 'https://swapi.dev/api/people/'
@@ -18,23 +19,39 @@ const Characters = () => {
   }, [])
 
   return (
-    <div>
+    <Grid
+      container
+      rowSpacing={2}
+      columnSpacing={2}
+      direction="row"
+      justifyContent="center"
+    >
       {data.map(elemento => {
         return (
-          <div key={elemento.name}>
-            <p>Nombre: {elemento.name}</p>
-            <p>Color de ojos: {elemento.eye_color}</p>
-            <p>Genero: {elemento.gender}</p>
-            <div>
-              filmes:{' '}
-              {elemento.films.map(function (item, i) {
-                return <FilmsData films={item} key={i} />
-              })}
-            </div>
-          </div>
+          <Grid item xs={4} key={elemento.name}>
+            <Card>
+              <CardContent>
+                <Typography component="div" variant="h5">
+                  Nombre: {elemento.name}
+                </Typography>
+                <Typography variant="body2">
+                  Color de ojos: {elemento.eye_color}
+                </Typography>
+                <Typography variant="body2">
+                  Genero: {elemento.gender}
+                </Typography>
+                <Typography variant="body2">
+                  filmes:{' '}
+                  {elemento.films.map(function (item, i) {
+                    return <FilmsData films={item} key={i} />
+                  })}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         )
       })}
-    </div>
+    </Grid>
   )
 }
 
