@@ -12,12 +12,7 @@ export default function CharactersPage() {
         alignItems="center"
       >
         <Typography component="div" variant="h2">
-          <Box sx={{ textAlign: 'center', m: 1 }}>Personajes Starwars</Box>
-        </Typography>
-        <Typography component="div" variant="body1">
-          <Box sx={{ textAlign: 'center', m: 1 }}>
-            Aqui van los personajes de starwars.
-          </Box>
+          <Box sx={{ textAlign: 'center', m: 1 }}>Personajes de StarWars</Box>
         </Typography>
         <Characters />
       </Grid>

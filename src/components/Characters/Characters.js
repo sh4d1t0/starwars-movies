@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import FilmsData from '../Films/FilmsData'
-import { Card, CardContent, Grid, Typography } from '@mui/material'
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Grid,
+  IconButton,
+  Typography
+} from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 const Characters = () => {
   const charactersAPI = 'https://swapi.dev/api/people/'
@@ -19,34 +28,31 @@ const Characters = () => {
   }, [])
 
   return (
-    <Grid
-      container
-      rowSpacing={2}
-      columnSpacing={2}
-      direction="row"
-      justifyContent="center"
-    >
+    <Grid container rowSpacing={1} columnSpacing={2} alignItems="top">
       {data.map(elemento => {
         return (
-          <Grid item xs={4} key={elemento.name}>
+          <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={elemento.name}>
             <Card>
+              <CardHeader
+                title={elemento.name}
+                subheader={'Genero: ' + elemento.gender}
+              />
               <CardContent>
-                <Typography component="div" variant="h5">
-                  Nombre: {elemento.name}
-                </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" color="text.secondary">
                   Color de ojos: {elemento.eye_color}
                 </Typography>
-                <Typography variant="body2">
-                  Genero: {elemento.gender}
-                </Typography>
-                <Typography variant="body2">
+                <Typography paragraph variant="body2" color="text.secondary">
                   filmes:{' '}
                   {elemento.films.map(function (item, i) {
                     return <FilmsData films={item} key={i} />
                   })}
                 </Typography>
               </CardContent>
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+              </CardActions>
             </Card>
           </Grid>
         )
