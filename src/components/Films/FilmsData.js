@@ -13,7 +13,6 @@ const FilmsData = props => {
     await axios.get(films).then(res => {
       const film = res.data
       setData(film)
-      console.log('filmsRequest', film)
     })
   }
 
