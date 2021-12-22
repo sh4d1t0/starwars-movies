@@ -35,7 +35,7 @@ const ExpandMore = styled(props => {
 
 const Films = () => {
   const [films, setFilms] = useState([])
-  const [expanded, setExpanded] = React.useState(false)
+  const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -104,8 +104,8 @@ const Films = () => {
                 </Typography>
                 <Typography paragraph variant="body2" color="text.secondary">
                   Personajes:{' '}
-                  {elemento.characters.map(function (item, i) {
-                    return <CharactersData characters={item} key={i} />
+                  {elemento.characters.map(function (character, i) {
+                    return <CharactersData characters={character} key={i} />
                   })}
                 </Typography>
               </CardContent>

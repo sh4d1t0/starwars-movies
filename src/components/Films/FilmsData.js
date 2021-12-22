@@ -3,20 +3,24 @@ import axios from 'axios'
 
 const FilmsData = props => {
   const { films } = props
-
-  //console.log('films props:', films)
-
-  //const filmAPI = films //recibir por props
-  const [film, setData] = useState([])
-
-  const filmsRequest = async () => {
-    await axios.get(films).then(res => {
-      const film = res.data
-      setData(film)
-    })
-  }
+  const [film, setFilms] = useState([])
 
   useEffect(() => {
+    const filmsRequest = async () => {
+      try {
+        const response = await axios.get(films)
+        setFilms(response.data)
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log('Error: ' + err.message)
+        }
+      }
+    }
     filmsRequest()
   }, [])
 

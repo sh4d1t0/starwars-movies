@@ -50,8 +50,8 @@ const Characters = () => {
                 </Typography>
                 <Typography paragraph variant="body2" color="text.secondary">
                   filmes:{' '}
-                  {elemento.films.map(function (item, i) {
-                    return <FilmsData films={item} key={i} />
+                  {elemento.films.map(function (film, i) {
+                    return <FilmsData films={film} key={i} />
                   })}
                 </Typography>
               </CardContent>
