@@ -35,7 +35,7 @@ const FilmsData = props => {
       }
     }
     filmsRequest()
-  }, [])
+  }, [films])
 
   return (
     <>

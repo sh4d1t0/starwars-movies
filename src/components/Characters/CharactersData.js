@@ -35,7 +35,7 @@ const CharactersData = props => {
       }
     }
     characterRequest()
-  }, [])
+  }, [characters])
 
   return (
     <>

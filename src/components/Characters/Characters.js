@@ -2,7 +2,6 @@ import React, { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import FilmsData from '../Films/FilmsData'
 import {
-  Box,
   Button,
   Card,
   CardActions,
@@ -14,7 +13,6 @@ import {
   Typography
 } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { textAlign } from '@mui/system'
 
 const reducer = (state, action) => {
   switch (action.type) {
