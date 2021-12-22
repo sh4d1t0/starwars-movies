@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useReducer } from 'react'
+import api from '../../services/api'
 import CharactersData from '../Characters/CharactersData'
 import { styled } from '@mui/material/styles'
 import {
@@ -33,30 +33,52 @@ const ExpandMore = styled(props => {
   })
 }))
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'getFilms':
+      return { ...state, films: action.payload }
+    case 'showHide':
+      return { ...state, expanded: !state.expanded }
+    default:
+      throw new Error()
+  }
+}
+
+const ACTION = {
+  GET_FILMS: 'getFilms',
+  SHOW_HIDE: 'showHide'
+}
+
 const Films = () => {
-  const filmAPI = 'https://swapi.dev/api/films'
-  const [data, setData] = useState([])
-  const [expanded, setExpanded] = React.useState(false)
+  const [state, dispatch] = useReducer(reducer, { films: [], expanded: false })
 
   const handleExpandClick = () => {
-    setExpanded(!expanded)
-  }
-
-  const filmsRequest = async () => {
-    await axios.get(filmAPI).then(res => {
-      const data = res.data.results
-      setData(data)
-      console.log('data', data)
-    })
+    dispatch({ type: ACTION.SHOW_HIDE })
   }
 
   useEffect(() => {
+    const filmsRequest = async () => {
+      try {
+        const response = await api.get('films')
+        //console.log('response ', response.data.results)
+        dispatch({ type: ACTION.GET_FILMS, payload: response.data.results })
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log('Error: ' + err.message)
+        }
+      }
+    }
     filmsRequest()
   }, [])
 
   return (
     <Grid container rowSpacing={1} columnSpacing={2} alignItems="top">
-      {data.map(elemento => {
+      {state.films.map(elemento => {
         return (
           <Grid
             item
@@ -98,8 +120,8 @@ const Films = () => {
                 </Typography>
                 <Typography paragraph variant="body2" color="text.secondary">
                   Personajes:{' '}
-                  {elemento.characters.map(function (item, i) {
-                    return <CharactersData characters={item} key={i} />
+                  {elemento.characters.map(function (character, i) {
+                    return <CharactersData characters={character} key={i} />
                   })}
                 </Typography>
               </CardContent>
@@ -108,15 +130,15 @@ const Films = () => {
                   <FavoriteIcon />
                 </IconButton>
                 <ExpandMore
-                  expand={expanded}
+                  expand={state.expanded}
                   onClick={handleExpandClick}
-                  aria-expanded={expanded}
+                  aria-expanded={state.expanded}
                   aria-label="show more"
                 >
                   <ExpandMoreIcon />
                 </ExpandMore>
               </CardActions>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <Collapse in={state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                   <Typography paragraph color="text.secondary">
                     {elemento.opening_crawl}

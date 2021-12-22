@@ -5,12 +5,7 @@ import Characters from '../../components/Characters/Characters'
 export default function CharactersPage() {
   return (
     <>
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-      >
+      <Grid container direction="column" justifyContent="center">
         <Typography component="div" variant="h2">
           <Box sx={{ textAlign: 'center', m: 1 }}>Personajes de StarWars</Box>
         </Typography>
