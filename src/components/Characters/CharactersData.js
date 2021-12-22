@@ -17,9 +17,10 @@ const CharactersData = props => {
   }, [])
 
   return (
-    <div>
-      <p>{character.name}</p>
-    </div>
+    <>
+      {character.name}
+      {', '}
+    </>
   )
 }
 
