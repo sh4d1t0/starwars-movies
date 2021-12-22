@@ -1,12 +1,6 @@
 import React from 'react'
 import { Route, Routes, Outlet } from 'react-router-dom'
-import {
-  Box,
-  Container,
-  createTheme,
-  CssBaseline,
-  ThemeProvider
-} from '@mui/material'
+import { Box, createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import Menu from './components/Menu/Menu'
 import HomePage from './pages/Home'
 import CharactersPage from './pages/Characters'
