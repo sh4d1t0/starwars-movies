@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../../services/api'
 import FilmsData from '../Films/FilmsData'
 import {
   Card,
@@ -13,23 +13,30 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
 const Characters = () => {
-  const charactersAPI = 'https://swapi.dev/api/people/'
-  const [data, setData] = useState([])
-
-  const charactersRequest = async () => {
-    await axios.get(charactersAPI).then(res => {
-      const data = res.data.results
-      setData(data)
-    })
-  }
+  const [characters, setCharacters] = useState([])
 
   useEffect(() => {
+    const charactersRequest = async () => {
+      try {
+        const response = await api.get('people')
+        setCharacters(response.data.results)
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log('Error: ' + err.message)
+        }
+      }
+    }
     charactersRequest()
   }, [])
 
   return (
     <Grid container rowSpacing={1} columnSpacing={2} alignItems="top">
-      {data.map(elemento => {
+      {characters.map(elemento => {
         return (
           <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={elemento.name}>
             <Card>

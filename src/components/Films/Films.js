@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../../services/api'
 import CharactersData from '../Characters/CharactersData'
 import { styled } from '@mui/material/styles'
 import {
@@ -34,29 +34,35 @@ const ExpandMore = styled(props => {
 }))
 
 const Films = () => {
-  const filmAPI = 'https://swapi.dev/api/films'
-  const [data, setData] = useState([])
+  const [films, setFilms] = useState([])
   const [expanded, setExpanded] = React.useState(false)
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
 
-  const filmsRequest = async () => {
-    await axios.get(filmAPI).then(res => {
-      const data = res.data.results
-      setData(data)
-      console.log('data', data)
-    })
-  }
-
   useEffect(() => {
+    const filmsRequest = async () => {
+      try {
+        const response = await api.get('films')
+        setFilms(response.data.results)
+      } catch (err) {
+        if (err.response) {
+          // Not in the 200 response range
+          console.log(err.response.data)
+          console.log(err.response.status)
+          console.log(err.response.headers)
+        } else {
+          console.log('Error: ' + err.message)
+        }
+      }
+    }
     filmsRequest()
   }, [])
 
   return (
     <Grid container rowSpacing={1} columnSpacing={2} alignItems="top">
-      {data.map(elemento => {
+      {films.map(elemento => {
         return (
           <Grid
             item
