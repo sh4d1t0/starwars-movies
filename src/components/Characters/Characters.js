@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import api from '../../services/api'
 import FilmsData from '../Films/FilmsData'
 import {
@@ -12,14 +12,32 @@ import {
 } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'getCharacters':
+      return { ...state, characters: action.payload }
+    default:
+      throw new Error()
+  }
+}
+
+const ACTION = {
+  GET_CHARACTERS: 'getCharacters'
+}
+
 const Characters = () => {
-  const [characters, setCharacters] = useState([])
+  const [state, dispatch] = useReducer(reducer, {
+    characters: []
+  })
 
   useEffect(() => {
     const charactersRequest = async () => {
       try {
         const response = await api.get('people')
-        setCharacters(response.data.results)
+        dispatch({
+          type: ACTION.GET_CHARACTERS,
+          payload: response.data.results
+        })
       } catch (err) {
         if (err.response) {
           // Not in the 200 response range
@@ -36,7 +54,7 @@ const Characters = () => {
 
   return (
     <Grid container rowSpacing={1} columnSpacing={2} alignItems="top">
-      {characters.map(elemento => {
+      {state.characters.map(elemento => {
         return (
           <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={elemento.name}>
             <Card>

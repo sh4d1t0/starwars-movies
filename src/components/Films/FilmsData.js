@@ -1,15 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import axios from 'axios'
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'getFilms':
+      return { ...state, films: action.payload }
+    default:
+      throw new Error()
+  }
+}
+
+const ACTION = {
+  GET_FILMS: 'getFilms'
+}
 
 const FilmsData = props => {
   const { films } = props
-  const [film, setFilms] = useState([])
+  const [state, dispatch] = useReducer(reducer, { films: [] })
 
   useEffect(() => {
     const filmsRequest = async () => {
       try {
         const response = await axios.get(films)
-        setFilms(response.data)
+        dispatch({ type: ACTION.GET_FILMS, payload: response.data })
       } catch (err) {
         if (err.response) {
           // Not in the 200 response range
@@ -26,7 +39,7 @@ const FilmsData = props => {
 
   return (
     <>
-      {film.title}
+      {state.films.title}
       {', '}
     </>
   )
