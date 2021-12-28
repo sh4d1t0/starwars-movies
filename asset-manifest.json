@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/starwars-movies/static/css/main.6ac5cb78.css",
-    "main.js": "/starwars-movies/static/js/main.50790960.js",
+    "main.js": "/starwars-movies/static/js/main.e8d2ff81.js",
     "static/js/787.46ebdb55.chunk.js": "/starwars-movies/static/js/787.46ebdb55.chunk.js",
     "static/media/5.jpg": "/starwars-movies/static/media/5.23821184d9d3dd5d443b.jpg",
     "static/media/6.jpg": "/starwars-movies/static/media/6.24f6d2595db04986406f.jpg",
@@ -12,11 +12,11 @@
     "static/media/3.jpg": "/starwars-movies/static/media/3.8771eac4b5a648eda240.jpg",
     "index.html": "/starwars-movies/index.html",
     "main.6ac5cb78.css.map": "/starwars-movies/static/css/main.6ac5cb78.css.map",
-    "main.50790960.js.map": "/starwars-movies/static/js/main.50790960.js.map",
+    "main.e8d2ff81.js.map": "/starwars-movies/static/js/main.e8d2ff81.js.map",
     "787.46ebdb55.chunk.js.map": "/starwars-movies/static/js/787.46ebdb55.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ac5cb78.css",
-    "static/js/main.50790960.js"
+    "static/js/main.e8d2ff81.js"
   ]
 }
