@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.6ac5cb78.css",
-    "main.js": "/static/js/main.1defcfdd.js",
-    "static/js/787.46ebdb55.chunk.js": "/static/js/787.46ebdb55.chunk.js",
-    "static/media/5.jpg": "/static/media/5.23821184d9d3dd5d443b.jpg",
-    "static/media/6.jpg": "/static/media/6.24f6d2595db04986406f.jpg",
-    "static/media/1.jpg": "/static/media/1.de6f3b7e60f320df4073.jpg",
-    "static/media/4.jpg": "/static/media/4.d98d22daadbc15cf63bb.jpg",
-    "static/media/logo-star-wars.png": "/static/media/logo-star-wars.23037d122e36f6d0b71a.png",
-    "static/media/2.jpg": "/static/media/2.145ccd5fab4063884575.jpg",
-    "static/media/3.jpg": "/static/media/3.8771eac4b5a648eda240.jpg",
-    "index.html": "/index.html",
-    "main.6ac5cb78.css.map": "/static/css/main.6ac5cb78.css.map",
-    "main.1defcfdd.js.map": "/static/js/main.1defcfdd.js.map",
-    "787.46ebdb55.chunk.js.map": "/static/js/787.46ebdb55.chunk.js.map"
+    "main.css": "/starwars-movies/static/css/main.6ac5cb78.css",
+    "main.js": "/starwars-movies/static/js/main.50790960.js",
+    "static/js/787.46ebdb55.chunk.js": "/starwars-movies/static/js/787.46ebdb55.chunk.js",
+    "static/media/5.jpg": "/starwars-movies/static/media/5.23821184d9d3dd5d443b.jpg",
+    "static/media/6.jpg": "/starwars-movies/static/media/6.24f6d2595db04986406f.jpg",
+    "static/media/1.jpg": "/starwars-movies/static/media/1.de6f3b7e60f320df4073.jpg",
+    "static/media/4.jpg": "/starwars-movies/static/media/4.d98d22daadbc15cf63bb.jpg",
+    "static/media/logo-star-wars.png": "/starwars-movies/static/media/logo-star-wars.23037d122e36f6d0b71a.png",
+    "static/media/2.jpg": "/starwars-movies/static/media/2.145ccd5fab4063884575.jpg",
+    "static/media/3.jpg": "/starwars-movies/static/media/3.8771eac4b5a648eda240.jpg",
+    "index.html": "/starwars-movies/index.html",
+    "main.6ac5cb78.css.map": "/starwars-movies/static/css/main.6ac5cb78.css.map",
+    "main.50790960.js.map": "/starwars-movies/static/js/main.50790960.js.map",
+    "787.46ebdb55.chunk.js.map": "/starwars-movies/static/js/787.46ebdb55.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ac5cb78.css",
-    "static/js/main.1defcfdd.js"
+    "static/js/main.50790960.js"
   ]
 }
