@@ -1,6 +1,6 @@
 {
-  "homepage": "https://sh4d1t0.github.io/starwars-movies/",
   "name": "starwars-movies",
+  "homepage": "https://sh4d1t0.github.io/starwars-movies/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,9 +19,9 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --detectOpenHandles",
     "eject": "react-scripts eject"
